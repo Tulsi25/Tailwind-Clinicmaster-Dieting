@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+@import "./abstract/variable.css";
+@import "./theme-color/skin.css";
+@import "./layout/layout.css";
+@import "./base/base.css";
+@import "./component/component.css";
+@import "./pages/pages.css";
+@import "../vendor/xmenu/xmenu.css";
+
+/* CUSTOM THEME */
+@theme {
+
+    --spacing: .25rem;
+
+    /* FONT FAMILY */
+    --font-base: "Poppins", "sans-serif";
+    --font-title: "Poppins", "sans-serif";
+    --font-sub-title: "Playfair Display";
+    --font-poppins: "Poppins", "sans-serif";
+    --font-arizonia: "Arizonia", "cursive";
+
+    /* COLORS */
+    --color-primary: var(--primary);
+    --color-primary-30: rgba(var(--primary-rgb), 0.03);
+    --color-primary-50: rgba(var(--primary-rgb), 0.05);
+    --color-primary-70: rgba(var(--primary-rgb), 0.07);
+    --color-primary-100: rgba(var(--primary-rgb), 0.1);
+    --color-primary-200: rgba(var(--primary-rgb), 0.2);
+    --color-primary-300: rgba(var(--primary-rgb), 0.3);
+    --color-primary-400: rgba(var(--primary-rgb), 0.4);
+    --color-primary-500: rgba(var(--primary-rgb), 0.5);
+    --color-primary-600: rgba(var(--primary-rgb), 0.6);
+    --color-primary-700: rgba(var(--primary-rgb), 0.7);
+    --color-primary-800: rgba(var(--primary-rgb), 0.8);
+    --color-primary-900: rgba(var(--primary-rgb), 0.9);
+    --color-primarydark: var(--primarydark);
+    --color-primarylight: var(--primarylight);
+    --color-primary-second: #EEF803;
+    
+    --color-secondary: var(--secondary);
+    --color-secondary-rgb: var(--secondary-rgb);
+    --color-secondarydark: var(--secondarydark);
+
+    --color-light-rgb: 236, 245, 251;
+    --color-white-rgb: 255, 255, 255;
+    --color-light: var(--light);
+    --color-bodybg: var(--body-bg);
+    --color-bodycolor: var(--body-color);
+    --color-heading: var(--heading-color);
+    --color-border: #E1EBF1;
+    
+    --color-star: #ff8717;
+    --color-red: #ff4747;
+    
+    --color-success: #31A56D;
+    --color-success-hover: #50b383;
+    --color-success-light: #d4edda;
+    --color-info: #0194D9;
+    --color-info-hover: #27a4df;
+    --color-info-light: #cce5ff;
+    --color-warning: #E79600;
+    --color-warning-hover: #eba626;
+    --color-warning-light: #fff3cd;
+    --color-danger: #D23636;
+    --color-danger-hover: #b32e2e;
+    --color-danger-light: #f8d7da;
+    
+    --color-linkedin: #007BB6;
+    --color-instagram: #8A5A4E;
+    --color-facebook: #3B5998;
+    --color-twitter: #1EA1F3;
+    --color-youtube: #CE201F;
+    --color-whatsapp: #01C854;
+    --color-goggle-plus: #DE4E43;
+
+    --color-yellow-50: oklch(0.78 0.03 81.38);
+    --color-yellow-100: oklch(0.973 0.071 103.193);
+    --color-yellow-200: oklch(0.945 0.129 101.54);
+    --color-yellow-300: oklch(0.94 0.19 106.75);
+    --color-yellow-400: oklch(0.87 0.16 88.92);
+    --color-yellow-500: oklch(0.96 0.21 111.19);
+    --color-yellow-600: oklch(0.74 0.18 54.73);
+    --color-yellow-700: oklch(0.75 0.18 57.36);
+    --color-yellow-800: oklch(0.476 0.114 61.907);
+    --color-yellow-900: oklch(0.421 0.095 57.708);
+    --color-yellow-950: oklch(0.286 0.066 53.813);
+
+    /* FONTSIZE */
+    --text-tiny: 10px;
+    --text-2xs: 13px;
+    --text-2xs--line-height: 1;
+    --text-2sm: 15px;
+    --text-2sm--line-height: 19px;
+    --text-2xxl: 1.75rem;
+    --text-2xxl--line-height: 1.4;
+    --text-3xxl: 35px;
+    --text-3xxl--line-height: 1.3;
+    --text-4xl: 40px;
+    --text-4xl--line-height: 1.3;
+    --text-4xxl: 45px;
+    --text-4xxl--line-height: 1.3;
+    --text-5xl: 50px;
+    --text-5xl--line-height: 1.2;
+    --text-5xxl: 55px;
+    --text-5xxl--line-height: 1.2;
+    --text-6xl: 60px;
+    --text-6xl--line-height: 1.2;
+    --text-6xxl: 65px;
+    --text-6xxl--line-height: 1.2;
+    --text-7xl: 70px;
+    --text-7xl--line-height: 1.2;
+    --text-7xxl: 75px;
+    --text-7xxl--line-height: 1.2;
+    --text-8xl: 80px;
+    --text-8xl--line-height: 1.2;
+    --text-8xxl: 85px;
+    --text-8xxl--line-height: 1.2;
+
+    /* BREAKPOINTS */
+    --breakpoint-*: initial;
+    --breakpoint-xs: 425px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1199px;
+    --breakpoint-xxl: 1281px;
+    --breakpoint-2xl: 1400px;
+    --breakpoint-2xxl: 1481px;
+    --breakpoint-3xl: 1681px;
+    --breakpoint-4xl: 1800px;
+	
+	--max-breakpoint-sm: 575px;
+    --max-breakpoint-md: 768px;
+    --max-breakpoint-lg: 991px;
+    --max-breakpoint-xl: 1199px;
+    --max-breakpoint-2xl: 1480px;
+    --max-breakpoint-3xl: 1680px;
+    --max-breakpoint-4xl: 1800px;
+
+    /* BACKGROUND IMAGE */
+    --background-image-rounded-corner: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50' fill='none'><path fill-rule='evenodd' clip-rule='evenodd' d='M0 0V50H50C22.3858 50 0 27.6142 0 0Z' fill='white'/></svg>");
+    --background-image-input-check: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    --background-image-qoute: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 137 97' fill='none'><path d='M30.3827 96.853C13.6299 96.853 0.0022583 83.2254 0.0022583 66.4724C0.0022583 50.3111 12.685 37.0558 28.6205 36.14C28.8964 33.1611 28.6894 25.0522 20.9192 13.7722C20.3318 12.9213 20.4384 11.7737 21.1679 11.0442C24.3476 7.86449 26.3127 5.86192 27.688 4.46131C29.4881 2.63001 30.3097 1.79388 31.5116 0.702599C31.9192 0.332703 32.4334 0.146683 32.9499 0.146683C33.4515 0.146683 33.9511 0.322197 34.3546 0.671341C47.8945 12.4531 62.9354 36.7965 60.7592 66.6272C59.484 84.1409 46.7092 96.853 30.3827 96.853ZM32.9707 5.21182C32.3876 5.78657 31.7227 6.46387 30.7423 7.4612C29.5508 8.67557 27.916 10.3397 25.4367 12.8273C34.8668 27.3581 33.0856 37.7078 32.306 39.1921C31.9359 39.8966 31.177 40.3711 30.3827 40.3711C15.9921 40.3711 4.28351 52.0797 4.28351 66.4724C4.28351 80.8632 15.9921 92.5718 30.3827 92.5718C44.4014 92.5718 55.3805 81.53 56.4904 66.3179C58.9362 32.7659 38.9955 10.9814 32.9707 5.21182Z' fill='black'/><path d='M136.787 66.6272C135.507 84.1388 122.731 96.853 106.408 96.853C89.6555 96.853 76.0257 83.2254 76.0257 66.4724C76.0257 50.3111 88.7106 37.0558 104.648 36.14C104.924 33.1632 104.715 25.0586 96.9428 13.7722C96.3554 12.9213 96.462 11.7737 97.1915 11.0442C100.359 7.87711 102.319 5.87863 103.695 4.48016C105.503 2.63644 106.329 1.79604 107.537 0.700668C107.945 0.332703 108.461 0.146683 108.975 0.146683C109.477 0.146683 109.977 0.322197 110.38 0.673477C123.92 12.4553 138.961 36.7984 136.787 66.6272ZM108.996 5.21182C108.409 5.79086 107.738 6.47222 106.749 7.47981C105.558 8.69248 103.929 10.3521 101.46 12.8273C110.89 27.3602 109.111 37.7078 108.334 39.1921C107.964 39.8944 107.203 40.3711 106.408 40.3711C92.0155 40.3711 80.3069 52.0797 80.3069 66.4724C80.3069 80.8632 92.0155 92.5718 106.408 92.5718C120.425 92.5718 131.406 81.53 132.518 66.3157C134.962 32.7681 115.021 10.9814 108.996 5.21182Z' fill='black'/></svg>");
+    --background-image-starsvg: url("data:image/svg+xml,<svg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 0L7.69706 4.30294L12 6L7.69706 7.69706L6 12L4.30294 7.69706L0 6L4.30294 4.30294L6 0Z' fill='%235A6D84'/></svg>");
+    --background-image-starsvg-white: url("data:image/svg+xml,<svg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 0L7.69706 4.30294L12 6L7.69706 7.69706L6 12L4.30294 7.69706L0 6L4.30294 4.30294L6 0Z' fill='white' /></svg>");
+    --background-image-starsvg-dark: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30" fill="none"><path d="M15.5918 0L17.7131 12.8787L30.5918 15L17.7131 17.1213L15.5918 30L13.4705 17.1213L0.591797 15L13.4705 12.8787L15.5918 0Z" fill="%230A3366"/></svg>');
+    --background-image-commentsvg: url('data:image/svg+xml,<svg width="146" height="146" viewBox="0 0 146 146" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M115.583 12.1667H109.5V6.08333C109.5 4.46993 108.859 2.92261 107.718 1.78177C106.577 0.640921 105.03 0 103.417 0C101.803 0 100.256 0.640921 99.1151 1.78177C97.9743 2.92261 97.3333 4.46993 97.3333 6.08333V12.1667H48.6667V6.08333C48.6667 4.46993 48.0257 2.92261 46.8849 1.78177C45.7441 0.640921 44.1967 0 42.5833 0C40.9699 0 39.4226 0.640921 38.2818 1.78177C37.1409 2.92261 36.5 4.46993 36.5 6.08333V12.1667H30.4167C22.3526 12.1763 14.6216 15.384 8.9195 21.0862C3.21737 26.7883 0.00965947 34.5193 0 42.5833L0 115.583C0.00965947 123.647 3.21737 131.378 8.9195 137.081C14.6216 142.783 22.3526 145.99 30.4167 146H115.583C123.647 145.99 131.378 142.783 137.081 137.081C142.783 131.378 145.99 123.647 146 115.583V42.5833C145.99 34.5193 142.783 26.7883 137.081 21.0862C131.378 15.384 123.647 12.1763 115.583 12.1667ZM12.1667 42.5833C12.1667 37.7431 14.0894 33.1012 17.512 29.6786C20.9345 26.2561 25.5765 24.3333 30.4167 24.3333H115.583C120.424 24.3333 125.065 26.2561 128.488 29.6786C131.911 33.1012 133.833 37.7431 133.833 42.5833V48.6667H12.1667V42.5833ZM115.583 133.833H30.4167C25.5765 133.833 20.9345 131.911 17.512 128.488C14.0894 125.065 12.1667 120.424 12.1667 115.583V60.8333H133.833V115.583C133.833 120.424 131.911 125.065 128.488 128.488C125.065 131.911 120.424 133.833 115.583 133.833Z" fill="white" fill-opacity="0.05"/><path d="M73 100.375C78.0396 100.375 82.125 96.2896 82.125 91.25C82.125 86.2104 78.0396 82.125 73 82.125C67.9604 82.125 63.875 86.2104 63.875 91.25C63.875 96.2896 67.9604 100.375 73 100.375Z" fill="white" fill-opacity="0.05"/><path d="M42.5835 100.375C47.6231 100.375 51.7085 96.2896 51.7085 91.25C51.7085 86.2104 47.6231 82.125 42.5835 82.125C37.5439 82.125 33.4585 86.2104 33.4585 91.25C33.4585 96.2896 37.5439 100.375 42.5835 100.375Z" fill="white" fill-opacity="0.05"/><path d="M103.417 100.375C108.456 100.375 112.542 96.2896 112.542 91.25C112.542 86.2104 108.456 82.125 103.417 82.125C98.3769 82.125 94.2915 86.2104 94.2915 91.25C94.2915 96.2896 98.3769 100.375 103.417 100.375Z" fill="white" fill-opacity="0.05"/></svg>');
+    --background-image-rounded-border: url("data:image/svg+xml,<svg width='177' height='177' viewBox='0 0 177 177' fill='none' xmlns='http://www.w3.org/2000/svg'><circle opacity='0.05' cx='88.5' cy='88.5' r='88' stroke='black'/><circle opacity='0.2' cx='88.5' cy='88.5' r='72' stroke='black'/><circle opacity='0.1' cx='89' cy='89' r='80.5' stroke='black'/></svg>");
+    --background-image-timeline-wrapper: url("data:image/svg+xml,<svg viewBox='0 0 1919 342' fill='none' xmlns='http://www.w3.org/2000/svg'><path opacity='0.25' d='M-3 1H910C937.614 1 960 23.3858 960 51V291C960 318.614 982.386 341 1010 341H1919' stroke='black' stroke-width='2'/></svg>");
+    --background-image-media-after: url('data:image/svg+xml,<svg width="310" height="323" viewBox="0 0 310 323" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M41.7633 172.255C-35.5975 251.064 9.8307 305.545 55.3362 323H260.203C309.744 311.998 310.674 281.743 277.762 246.304C342.195 199.757 298.158 134.698 249.022 123.061C327.361 3.52057 192.055 3.87965 135.502 25.2131C90.4878 -26.1001 46.6286 6.13397 57.819 74.9029C-33.2797 87.0929 4.57897 135.407 41.7633 172.255Z" fill="%23F7F3EB"/></svg>');
+    --background-image-circle-check: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.99611 10.4755C2.22497 10.1756 2.58158 9.81672 3.12968 9.26862C3.46548 8.93282 3.72932 8.58655 3.91969 8.20796H2.06902L2.03367 8.24331C1.53075 8.74618 1.10089 9.17602 0.80358 9.56562C0.48612 9.98172 0.25001 10.4389 0.25 11.0001C0.25001 11.5612 0.48613 12.0184 0.80358 12.4345C1.10095 12.8243 1.53091 13.2542 2.03395 13.7572L2.06906 13.7923C2.40272 14.1259 2.56011 14.3423 2.64932 14.5465C2.73619 14.7454 2.78628 14.9972 2.78628 15.448C2.78628 15.5348 2.7832 15.6443 2.77972 15.768C2.7708 16.085 2.75926 16.4951 2.79029 16.854C2.83569 17.3788 2.97933 18.0348 3.48139 18.5327C3.97961 19.0267 4.63287 19.1668 5.15443 19.2108C5.50997 19.2409 5.91703 19.2293 6.23179 19.2204C6.35581 19.2169 6.4655 19.2138 6.55206 19.2138C6.99328 19.2138 7.24126 19.2582 7.43645 19.3387C7.63147 19.4192 7.84006 19.5633 8.15424 19.8775C8.22135 19.9446 8.30978 20.0393 8.41179 20.1487C8.64175 20.3952 8.9407 20.7156 9.22 20.9597C9.6437 21.3301 10.2516 21.7501 11 21.7501C11.7485 21.7501 12.3563 21.3301 12.7801 20.9597C13.0593 20.7156 13.3583 20.3952 13.5882 20.1487C13.6902 20.0393 13.7787 19.9446 13.8458 19.8774C14.1599 19.5633 14.3685 19.4192 14.5635 19.3387C14.7587 19.2582 15.0067 19.2138 15.4479 19.2138C15.5345 19.2138 15.6442 19.2169 15.7682 19.2204C16.083 19.2293 16.49 19.2409 16.8456 19.2108C17.3382 19.1693 17.9484 19.0419 18.4345 18.6115C18.5032 18.5626 18.5634 18.5023 18.6122 18.4335C19.039 17.9499 19.1673 17.3447 19.2097 16.854C19.2407 16.4951 19.2292 16.085 19.2203 15.768C19.2168 15.6443 19.2137 15.5348 19.2137 15.448C19.2137 14.9972 19.2638 14.7454 19.3507 14.5465C19.4399 14.3423 19.5973 14.1259 19.9309 13.7923L19.9661 13.7572C20.4691 13.2542 20.8991 12.8243 21.1964 12.4345C21.5139 12.0184 21.75 11.5612 21.75 11.0001C21.75 10.4389 21.5139 9.98172 21.1964 9.56562C20.8991 9.17602 20.4693 8.74619 19.9664 8.24334L19.931 8.20796C19.6381 7.91506 19.1632 7.91506 18.8703 8.20796V9.26862C19.4184 9.81672 19.775 10.1756 20.0039 10.4755C20.2196 10.7582 20.25 10.8988 20.25 11.0001C20.25 11.1014 20.2195 11.242 20.0039 11.5247C19.775 11.8246 19.4184 12.1835 18.8703 12.7316C18.4872 13.1147 18.1761 13.4881 17.9761 13.9461C17.7737 14.4095 17.7137 14.8923 17.7137 15.448C17.7137 15.6203 17.7185 15.7775 17.723 15.9275C17.7313 16.2017 17.7389 16.4516 17.7153 16.7247C17.681 17.1211 17.588 17.343 17.4624 17.4675C17.3379 17.591 17.1156 17.6827 16.7194 17.7162C16.4476 17.7391 16.1998 17.7315 15.9282 17.7232C15.7781 17.7186 15.6207 17.7138 15.4479 17.7138C14.9177 17.7138 14.4461 17.7644 13.9912 17.9522C13.5362 18.1401 13.1642 18.4377 12.7851 18.8168C12.6421 18.9598 12.5176 19.0944 12.3973 19.2245C12.2047 19.4327 12.0228 19.6293 11.7929 19.8303C11.44 20.1388 11.1853 20.2501 11 20.2501C10.8148 20.2501 10.56 20.1388 10.2071 19.8303C9.9772 19.6293 9.7953 19.4327 9.6027 19.2245C9.4824 19.0944 9.3579 18.9598 9.2149 18.8168C8.8358 18.4377 8.46384 18.1401 8.00878 17.9522C7.55391 17.7644 7.08228 17.7138 6.55206 17.7138C6.37933 17.7138 6.22192 17.7186 6.07176 17.7232C5.80023 17.7315 5.55243 17.7391 5.28061 17.7162C4.8844 17.6827 4.66207 17.591 4.53759 17.4675C4.41197 17.343 4.319 17.1211 4.28471 16.7247C4.26109 16.4516 4.26866 16.2017 4.27697 15.9275C4.28152 15.7775 4.28628 15.6203 4.28628 15.448C4.28628 14.8923 4.22631 14.4095 4.02392 13.9461C3.82387 13.4881 3.51281 13.1147 3.1297 12.7316C2.5816 12.1835 2.22499 11.8246 1.99612 11.5247C1.78048 11.242 1.75001 11.1014 1.75 11.0001C1.75001 10.8987 1.78047 10.7581 1.99611 10.4755Z" fill="%23227675"/><path d="M18.8703 8.20703C18.5774 8.49992 18.5774 8.97479 18.8703 9.26769V8.20703Z" fill="%23227675"/><path d="M9.26857 3.12885C9.81667 2.58073 10.1756 2.22412 10.4755 1.99526C10.7582 1.7796 10.8988 1.74915 11.0001 1.74915L9.56567 0.802734L8.24326 2.03282L8.20789 2.06819C7.69323 2.58285 7.24456 2.78541 6.55215 2.78541C6.46537 2.78541 6.35586 2.78233 6.23219 2.77885L5.14622 2.78942L3.46752 3.48049L2.7893 5.15354L2.77973 6.23093C2.78324 6.35495 2.78635 6.46464 2.78635 6.55121C2.78635 7.24363 2.58378 7.6923 2.06909 8.20699H3.91976C4.16308 7.72306 4.28635 7.18634 4.28635 6.55121C4.28635 6.40006 4.28266 6.26066 4.27866 6.12758L4.27694 6.0709C4.26862 5.79937 4.26104 5.55155 4.28399 5.27973C4.31744 4.88352 4.40917 4.66118 4.53262 4.5367C4.65718 4.41109 4.87901 4.31813 5.27546 4.28384C5.54858 4.26022 5.79846 4.26779 6.07264 4.2761L6.12927 4.2778C6.26219 4.28176 6.40141 4.28541 6.55215 4.28541C7.68413 4.28541 8.50354 3.89386 9.26857 3.12885Z" fill="%23227675"/><path d="M5.14623 2.79102C4.62136 2.83641 3.9654 2.98004 3.46753 3.48209L5.14623 2.79102Z" fill="%23227675"/><path d="M3.46753 3.48047C2.97348 3.97868 2.83335 4.63195 2.78931 5.15352L3.46753 3.48047Z" fill="%23227675"/><path d="M11.0001 0.25C10.4389 0.25 9.98167 0.48611 9.56567 0.80358L11.0001 1.75C11.1014 1.75 11.242 1.78045 11.5247 1.99611C11.8246 2.22497 12.1835 2.58158 12.7316 3.1297C13.0245 3.42259 13.4994 3.42259 13.7923 3.1297C14.0852 2.83681 14.0852 2.36193 13.7923 2.06904L13.7569 2.03368C13.254 1.53075 12.8242 1.10089 12.4345 0.80358C12.0185 0.48611 11.5613 0.25 11.0001 0.25Z" fill="%23227675"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.502 1.44254C20.8099 1.71963 20.8348 2.19385 20.5577 2.50173L11.5575 12.5017C11.4198 12.6547 11.2254 12.7443 11.0197 12.7497C10.814 12.7551 10.6152 12.6758 10.4697 12.5303L6.96967 9.0303C6.67678 8.73744 6.67678 8.26257 6.96967 7.96968C7.26256 7.67678 7.73744 7.67678 8.03033 7.96968L10.9714 10.9107L19.4428 1.49827C19.7199 1.19039 20.1941 1.16544 20.502 1.44254Z" fill="%23227675"/></svg>');
+    --background-image-arrow-right: url('data:image/svg+xml,<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(%23clip0_16165_1647)"><path d="M17.7938 8.50229C17.7936 8.50208 17.7934 8.50183 17.7931 8.50162L14.1192 4.84537C13.8439 4.57147 13.3988 4.57249 13.1248 4.84776C12.8508 5.123 12.8519 5.56818 13.1271 5.84212L15.5938 8.29687H0.703125C0.314789 8.29687 0 8.61166 0 9C0 9.38833 0.314789 9.70312 0.703125 9.70312H15.5938L13.1272 12.1579C12.8519 12.4318 12.8509 12.877 13.1248 13.1522C13.3988 13.4275 13.844 13.4285 14.1192 13.1546L17.7932 9.49837C17.7934 9.49816 17.7936 9.49791 17.7938 9.4977C18.0692 9.22285 18.0683 8.77623 17.7938 8.50229Z" fill="white"/></g><defs><clipPath id="clip0_16165_1647"><rect width="18" height="18" fill="white"/></clipPath></defs></svg>');
+    --background-image-sub-title-before: url('data:image/svg+xml,<svg width="32" height="50" viewBox="0 0 32 50" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M32 45.0623C32 45.0623 17.0015 39.7396 13.1391 41.2797C9.27679 42.8195 8.791 49.055 12.7337 49.9123C16.6761 50.7695 32 45.0623 32 45.0623Z" fill="%23FCFF00"/><path fill-rule="evenodd" clip-rule="evenodd" d="M29 22C29 22 13.5823 2.25687 10.0949 0.619816C6.60755 -1.01747 0.219845 0.66262 0.00498873 4.78999C-0.210099 8.91783 6.57221 11.7253 12.1541 14.3918C17.736 17.0582 29 22 29 22Z" fill="%23FCFF00"/></svg>');
+    --background-image-sub-title-after: url('data:image/svg+xml,<svg width="300" height="15" viewBox="0 0 300 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 15C0.0101745 14.9988 42.6458 -3.42065 112.043 0.56456C164.622 3.58412 300 2.70398 300 2.70398C300 2.70398 176.533 10.3953 111.416 6.91522C78.3833 5.14961 0 15 0 15Z" fill="%23FCFF00"/></svg>');
+    
+    /* GRADIENT */
+    --bg1-gradient: 180deg, #203400 0%, #1B2012 100%;
+    --bg2-gradient: to bottom, rgba(0, 0, 0, 0) 50%, var(--color-primary) 100%;
+    --icon-bx-footer-gradient: to right, rgba(86, 101, 147, 0.3) 50%, rgba(255, 255, 255, 0) 0%;
+    --icon-bx-footer-white-gradient: to right, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 0%;
+    --content-bx-2-gradient: 45deg, rgba(var(--secondary-rgb), 0.1), transparent 80%;
+    --content-bx-3-gradient: 45deg, rgba(var(--primary-rgb), 0.1), transparent 80%;
+    --content-wrapper-gradient: to bottom, rgba(30, 87, 153, 0) 0%, rgb(255, 255, 255) 100%;
+    --content-wrapper-2-gradient: to right, rgba(30, 87, 153, 0) 0%, rgb(255, 255, 255) 100%;
+    --content-wrapper-3-gradient: to left, rgba(0, 0, 0, 0) 0%, var(--color-light) 20%;
+    --banner-2-gradient: to right, rgb(255, 243, 248) 0%, rgba(255, 243, 248, 0) 50%, rgb(255, 243, 248) 100%;
+    --seprator-gradient: to right, rgba(86, 101, 147, 0.3) 50%, rgba(255, 255, 255, 0) 0%;
+    --card-2-gradient: to top, rgba(3, 27, 78, 0.4) 0%, rgba(3, 27, 78, 0);
+    --top-light-gradient: to top, rgba(0, 0, 0, 0) 0%, #ffffff 100%;
+    --team-media2-gradient: 180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 64.5%;
+    --title-gradient: to right, rgba(0, 0, 0, 0.2) 50%, rgba(255, 255, 255, 0) 0%;
+    --title2-gradient: to right, var(--color-secondary) 0, rgba(0, 0, 0, 0) 100%;
+    --title3-gradient: to right, #fff 0, rgba(0, 0, 0, 0) 100%;
+    --title4-gradient: 90deg, #ECDFC6 0%, rgba(247, 243, 235, 0) 100%;
+    --sub-title-gradient: 45deg, rgba(var(--primary-rgb), 0.2), transparent;
+    --img-hover-gradient: to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%;
+    --vertical-divider-gradient: to bottom, rgba(0, 0, 0, 0) 0%, rgb(255, 255, 255) 50%, rgba(0, 0, 0, 0) 100%;
+    --primary-gradient: to bottom, rgba(0, 0, 0, 0) 50%, rgba(var(--primary-rgb), 0.05) 100%;
+    --card-6-gradient: 180deg, rgba(71, 60, 37, 0) 0%, rgba(71, 60, 37, 0.4) 100%;
+
+    /* SHADOW */
+    --shadow-circle: 0 0 20px rgba(0,0,0,.05);
+    --shadow-1: 0 0 30px rgba(0,0,0,.05);
+    --shadow-2: 0 20px 60px rgba(0, 0, 0, .05);
+    --shadow-3: 0 0 30px 0 rgba(0, 0, 0, 0.15);
+    --shadow-4: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --shadow-5: -20px 10px 50px rgba(var(--secondary-rgb), 0.1);
+    --shadow-6: 0 20px 50px rgba(var(--secondary-rgb), 0.1);
+    --shadow-7: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-8: 0 0 20px rgba(var(--secondary-rgb), 0.02);
+    --shadow-9: 0 0 60px rgba(var(--secondary-rgb), 0.05);
+    --shadow-10: 0 0 50px rgba(var(--secondary-rgb), 0.1);
+    --shadow-11: 0 0 40px rgba(var(--secondary-rgb), 0.07);
+    --shadow-12: 0 0px 15px rgba(var(--secondary-rgb), 0.05);
+    --shadow-13: 0 0 30px rgba(var(--secondary-rgb), 0.1);
+    --shadow-14: 0 0 50px rgba(var(--secondary-rgb), 0.05);
+    --shadow-15: 0 0 30px rgba(var(--secondary-rgb), 0.05);
+    --shadow-16: 0 10px 20px rgba(var(--secondary-rgb), 0.1);
+    --shadow-17: 0px 20px 30px rgba(0, 0, 0, 0.1);
+    --shadow-18: 0 0 35px rgba(var(--secondary-rgb), 0.05);
+    --shadow-img-box-1: 0 0 35px rgba(3, 27, 78, 0.05);
+    --shadow-btn-squre: 0 20px 50px rgba(3, 27, 78, 0.1);
+    --shadow-info-widget-3: 0 0 50px rgba(3, 27, 78, 0.1);
+    --shadow-info-widget-10: 0 20px 50px rgba(3, 27, 78, 0.1);
+    --shadow-video-bx: 0 0 30px rgba(3, 27, 78, 0.1);
+    --shadow-accordion: var(--accordion-shadow);
+    --shadow-input: 0 20px 60px rgba(0, 0, 0, 0.05);
+    --shadow-icon-bx-9: 0 10px 30px rgba(0, 0, 0, 0.02);
+    --shadow-table: inset 0 0 0 9999px #F4F6FA;
+    --shadow-btn: 0 5px 20px rgba(0, 0, 0, 0.05);
+    --shadow-submenu: 0 20px 40px rgba(0, 0, 0, 0.05);
+    --shadow-scroll-top: 0px 10px 20px 0 rgba(0, 0, 0, 0.2);
+    --shadow-breadcrumb: 0 0 30px rgba(var(--secondary-rgb), 0.05);
+    --shadow-testimonial: 0 90px 0 -70px rgba(255, 255, 255, 0.4), 0 40px 0 -30px rgba(255, 255, 255, 0.6);
+
+    --drop-shadow-icon-bx-wraper-3: 0 20px 50px rgba(3, 27, 78, 0.02);
+
+    /* Z-INDEX */
+    --z-index-1: 1;
+    --z-index-2: 2;
+    --z-index-4: 4;
+    --z-index-9: 9;
+    --z-index-99: 99;
+    --z-index-999: 999;
+    --z-index-9999: 9999;
+    --z-index-99999: 99999;
+    --z-index-999999: 999999;
+
+    /*  BORDER RADIUS*/
+    --radius-2lg: 10px;
+    --radius-xxl: 15px;
+    --radius-2xl: 20px;
+    --radius-2xxl: 25px;
+    --radius-3xl: 30px;
+    --radius-3xxl: 35px;
+    --radius-4xl: 40px;
+    --radius-4xxl: 45px;
+    --radius-5xl: 50px;
+    --radius-6xl: 60px;
+    --radius-8xl: 80px;
+    --radius-10xl: 100px;
+
+    /* ANIMATIONS */
+    --animate-move1: move1 10s infinite;
+    --animate-move2: move2 10s infinite;
+    --animate-move3: move3 5s infinite;
+    --animate-move4: move4 5s infinite;
+    --animate-toTopRight: toTopRight 0.5s forwards;
+    --animate-toRightFromLeft: toRightFromLeft 0.3s forwards;
+    --animate-dzRing: dzRing 1.2s infinite ease-in-out;
+    --animate-circleWrapper: circleWrapper 25s linear infinite;
+    --animate-ticker: ticker 60s linear infinite 0s normal;
+    --animate-identifier: identifier 20s linear infinite;
+    --animate-circleWrapper2 : circleWrapper2 25s linear infinite;
+    --animate-dzShine : dzShine 0.75s;
+    --animate-dzShine2 : dzShine2 0.75s;
+    --animate-shake : shake 1s;
+    --animate-headerSlideDown : headerSlideDown 0.95s ease 0s normal forwards 1 running;
+    --animate-dzRing1 : dzRing1 2s linear infinite;
+    --animate-dzRing2 : dzRing2 2s linear infinite;
+    --animate-dzRing3 : dzRing3 2s linear infinite;
+    --animate-dzRing4 : dzRing4 2s linear infinite;
+    --animate-badgeZoom: badgeZoom 0.95s infinite ease-in-out;
+    --animate-load: load 0.7s infinite alternate ease-in-out;
+    --animate-dzMoving: dzMoving 1s ease-in-out infinite;
+    --animate-animationSignal1: animationSignal1;
+    --animate-animationSignal2: animationSignal2;
+    --animate-rotation: rotation 1s linear 0s infinite normal none running;
+    --animate-rotationBack: rotationBack 0.5s linear infinite;
+}

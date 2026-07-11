@@ -1,0 +1,12 @@
+.swiper-pagination-bullets .swiper-pagination-bullet {
+    @apply size-2.5 bg-white;
+}
+.style-2.swiper-pagination-bullets .swiper-pagination-bullet {
+    @apply size-2.5 bg-secondary;
+}
+.style-2.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    @apply w-6.25 rounded-5xl;
+}
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    @apply !bg-primary;
+}
