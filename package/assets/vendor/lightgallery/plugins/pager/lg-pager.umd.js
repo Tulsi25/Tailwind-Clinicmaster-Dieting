@@ -144,4 +144,3 @@
     return Pager;
 
 })));
-//# sourceMappingURL=lg-pager.umd.js.map

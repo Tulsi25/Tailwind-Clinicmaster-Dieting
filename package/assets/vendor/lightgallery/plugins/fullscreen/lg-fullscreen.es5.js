@@ -132,4 +132,3 @@ var FullScreen = /** @class */ (function () {
 }());
 
 export default FullScreen;
-//# sourceMappingURL=lg-fullscreen.es5.js.map

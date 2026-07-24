@@ -140,4 +140,3 @@
     return FullScreen;
 
 })));
-//# sourceMappingURL=lg-fullscreen.umd.js.map

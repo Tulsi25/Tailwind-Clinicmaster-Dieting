@@ -195,4 +195,3 @@ var Hash = /** @class */ (function () {
 }());
 
 export default Hash;
-//# sourceMappingURL=lg-hash.es5.js.map

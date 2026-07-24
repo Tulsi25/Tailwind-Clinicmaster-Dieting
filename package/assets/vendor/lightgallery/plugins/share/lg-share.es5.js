@@ -216,4 +216,3 @@ var Share = /** @class */ (function () {
 }());
 
 export default Share;
-//# sourceMappingURL=lg-share.es5.js.map

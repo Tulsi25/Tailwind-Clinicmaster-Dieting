@@ -247,4 +247,3 @@ var Autoplay = /** @class */ (function () {
 }());
 
 export default Autoplay;
-//# sourceMappingURL=lg-autoplay.es5.js.map

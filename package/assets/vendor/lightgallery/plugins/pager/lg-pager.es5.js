@@ -136,4 +136,3 @@ var Pager = /** @class */ (function () {
 }());
 
 export default Pager;
-//# sourceMappingURL=lg-pager.es5.js.map

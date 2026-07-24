@@ -202,4 +202,3 @@ var CommentBox = /** @class */ (function () {
 }());
 
 export default CommentBox;
-//# sourceMappingURL=lg-comment.es5.js.map

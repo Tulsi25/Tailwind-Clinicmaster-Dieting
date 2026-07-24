@@ -480,4 +480,3 @@ var Thumbnail = /** @class */ (function () {
 }());
 
 export default Thumbnail;
-//# sourceMappingURL=lg-thumbnail.es5.js.map

@@ -264,4 +264,3 @@ var Rotate = /** @class */ (function () {
 }());
 
 export default Rotate;
-//# sourceMappingURL=lg-rotate.es5.js.map

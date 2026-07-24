@@ -2722,4 +2722,3 @@ function lightGallery(el, options) {
 }
 
 export default lightGallery;
-//# sourceMappingURL=lightgallery.es5.js.map
