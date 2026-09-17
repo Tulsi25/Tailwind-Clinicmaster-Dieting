@@ -25,8 +25,31 @@ require('recaptcha-master/src/autoload.php');
 /* ReCaptch Secret */
 $recaptchaSecret = '<!-- Put your reCaptcha Key -->';
 
+/* ============================================================
+   MAIL SETTINGS -- everything you need to fill in is right here.
+   ============================================================
+
+   1. $dzEmailTo   The inbox that receives the enquiries.
+   2. SMTP_HOST    Your host's outgoing mail server (cPanel > Email Accounts >
+                   "Connect Devices" shows it, e.g. mail.yourdomain.com).
+   3. SMTP_USER    Usually the full mailbox address, same as $dzEmailTo.
+   4. SMTP_PASS    That mailbox's password. Put it in on the server, and do not
+                   commit this file to a public repository once it is filled in.
+   5. SMTP_PORT /  587 with 'tls' works on most hosts.
+      SMTP_SECURE  Use 465 with 'ssl' if your host requires implicit TLS.
+
+   Until SMTP_HOST/USER/PASS are filled in, sending will fail and the form
+   will report "Some problem in sending mail".
+   ------------------------------------------------------------ */
+
 $dzEmailTo 		= "info@exemple.com";   /* Receiver Email Address */
 $dzEmailFrom    = "ClinicMaster Contact";
+
+define('SMTP_HOST',   '');      /* e.g. mail.yourdomain.com */
+define('SMTP_USER',   '');      /* e.g. info@yourdomain.com */
+define('SMTP_PASS',   '');      /* mailbox password         */
+define('SMTP_PORT',   587);     /* 587 for tls, 465 for ssl */
+define('SMTP_SECURE', 'tls');   /* must be lowercase: 'tls' or 'ssl' */
 
 #### Load PHP Mailer Library ####
 use PHPMailer\PHPMailer\PHPMailer;
@@ -50,12 +73,12 @@ function smtp_mail($dzEmailTo, $dzEmailFrom, $dzEmail, $dzMailSubject, $dzMailMe
     $mail = new PHPMailer(true);
 	//$mail->SMTPDebug = SMTP::DEBUG_SERVER;             //Enable verbose debug output
     $mail->isSMTP();                                     //Send using SMTP
-    $mail->Host       = '';                				 //Set the SMTP server to send through
+    $mail->Host       = SMTP_HOST;         				 //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                            //Enable SMTP authentication
-    $mail->Username   = '';        						 //SMTP username
-    $mail->Password   = '';                  			 //SMTP password
-    $mail->SMTPSecure = 'TLS';            				 //Enable implicit TLS encryption
-    $mail->Port       = 587;                             //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Username   = SMTP_USER;        				 //SMTP username
+    $mail->Password   = SMTP_PASS;                  	 //SMTP password
+    $mail->SMTPSecure = SMTP_SECURE;      				 //Must be lowercase 'tls'/'ssl': PHPMailer compares it strictly
+    $mail->Port       = SMTP_PORT;                       //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
     $mail->setFrom($dzEmailTo, $dzEmailFrom);
@@ -275,12 +298,13 @@ try {
 			} */
 			
 			if ($error) {
+				$dzRes['msg'] = $msg;
 				echo json_encode($dzRes);
 				exit;
 			}
-			
-				
-			
+
+
+
 			$dzMailSubject = 'ClinicMaster|Appointment Form: A Person want to contact';
 			$dzMailMessage	= 	"
 								A person want to contact you: <br><br>

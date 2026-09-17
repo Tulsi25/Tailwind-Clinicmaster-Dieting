@@ -33,12 +33,33 @@ const contactForm = () => {
       const activeRecaptcha =
         document.querySelector("input[reCaptchaEnable]")?.value == "1";
 
+      const showMsg = (html) => {
+        if (!dzFormMsg) return;
+        dzFormMsg.innerHTML = html;
+        setTimeout(() => {
+          const alertBox = dzFormMsg.querySelector(".alert");
+          if (alertBox) alertBox.style.display = "none";
+        }, 5000);
+      };
+
       try {
         const response = await fetch(dzFormAction, {
           method: "POST",
           body: formData,
         });
-        const dzRes = await response.json();
+
+        // The handler is PHP. On a static server (or if the script errors) the
+        // body is not JSON, so surface that instead of leaving "Submitting.." up.
+        let dzRes;
+        try {
+          dzRes = await response.json();
+        } catch {
+          throw new Error(
+            response.ok
+              ? "The form handler did not return a valid response. If you are previewing locally, note that the PHP script only runs on a real server."
+              : `Server returned ${response.status}.`
+          );
+        }
 
         if (dzRes.status == 1) {
           msgDiv = `<div class="gen alert dz-alert alert-success">${dzRes.msg}</div>`;
@@ -46,21 +67,20 @@ const contactForm = () => {
           msgDiv = `<div class="err alert dz-alert alert-danger">${dzRes.msg}</div>`;
         }
 
-        if (dzFormMsg) {
-          dzFormMsg.innerHTML = msgDiv;
-          setTimeout(() => {
-            const alertBox = dzFormMsg.querySelector(".alert");
-            if (alertBox) alertBox.style.display = "none";
-          }, 5000);
-        }
+        showMsg(msgDiv);
 
-        form.reset();
+        if (dzRes.status == 1) {
+          form.reset();
+        }
 
         if (activeRecaptcha) {
           grecaptcha.reset();
         }
       } catch (error) {
         console.error("Form submit failed:", error);
+        showMsg(
+          `<div class="err alert dz-alert alert-danger">Sorry, your message could not be sent. Please try again, or contact us directly.</div>`
+        );
       }
     });
   });
