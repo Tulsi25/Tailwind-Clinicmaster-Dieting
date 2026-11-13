@@ -22,7 +22,7 @@
 	<link rel="canonical" href="https://clinicmaster.dexignzone.com/tailwind/dieting/about-us.html">
 
 	<!-- FAVICONS ICON -->
-	<link rel="icon" type="image/png" href="../src/images/favicon.png">
+	<link rel="icon" type="image/png" href="images/favicon.png">
 
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="ClinicMaster - Diet & Nutrition Tailwind CSS Template | DexignZone">
@@ -42,30 +42,61 @@
 
 	<meta name="format-detection" content="telephone=no">
 	
-	<link rel="stylesheet" type="text/css" href="../assets/vendor/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/swiper/swiper-bundle.min.css">
 
-	<link rel="stylesheet" type="text/css" href="../assets/icons/fontawesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/icons/flaticon/flaticon.css">
-	<link rel="stylesheet" type="text/css" href="../assets/icons/feather/css/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="assets/icons/fontawesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/icons/flaticon/flaticon.css">
+	<link rel="stylesheet" type="text/css" href="assets/icons/feather/css/iconfont.css">
 	
 <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	
 	<!-- Custom Stylesheet -->
-	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+	<!-- Show the vertical social rail on smaller laptops too; the template hides it below 1200px. -->
+	<style>
+		@media (min-width: 992px) and (max-width: 1198.98px) {
+			.social-rail { display: flex !important; width: 3.5rem; min-width: 3.5rem; padding-left: .5rem; padding-right: .5rem; }
+			div:has(> .social-rail.rail-left) > .container { padding-left: 3.5rem; }
+			div:has(> .social-rail.rail-right) > .container { padding-right: 3.5rem; }
+		}
+		/* Keep the white header bar clear of the vertical social rail. */
+		@media (min-width: 1199px) {
+			.main-bar > .container::before { margin-left: 2.5rem; width: calc(100% - 1.875rem); }
+		}
+		@media (min-width: 992px) and (max-width: 1198.98px) {
+			.main-bar > .container::before { margin-left: 1.875rem; width: calc(100% - 0.625rem); }
+		}
+		/* Smoother sticky header: slide on transform (no layout work) and keep it short.
+		   The template animated margin-top from -150px over 0.95s, which dragged. */
+		@keyframes headerDropIn {
+			from { transform: translateY(-100%); }
+			to { transform: translateY(0); }
+		}
+		.sticky-header-wrapper.is-fixed:not(.sticky-no) .main-bar {
+			animation: headerDropIn .35s cubic-bezier(.22,.61,.36,1) both;
+			will-change: transform;
+		}
+		.main-bar { transition: background-color .3s ease, box-shadow .3s ease; }
+		@media (prefers-reduced-motion: reduce) {
+			.sticky-header-wrapper.is-fixed:not(.sticky-no) .main-bar { animation: none; }
+		}
+		/* Cross-fade between pages instead of a hard white flash on navigation. */
+		@view-transition { navigation: auto; }
+		::view-transition-old(root), ::view-transition-new(root) {
+			animation-duration: .25s;
+			animation-timing-function: ease;
+		}
+		@media (prefers-reduced-motion: reduce) {
+			::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+		}
+	</style>
 </head>	
 <body id="bg">
 <div class="page-wraper">
 
-	<div class="fixed size-full left-0 top-0 z-9999999 flex items-center justify-center bg-white" id="dzPreloader">
-	<div>
-		<span class="size-12 rounded-full border-2 border-secondary border-b-transparent box-border animate-rotation mx-auto block mb-5 absolute right-7.5 top-10 after:box-border after:absolute after:inset-0 after:m-auto after:border-2 after:border-primary after:border-t-transparent after:size-6 after:rounded-full after:animate-rotationBack after:origin-center"></span>
-		<img src="images/logo.gif" alt="/" class="w-100 block mx-auto">
-		<span class="loader"></span>
-	</div>
-</div> 
 
 	<!-- Header Star -->
 	<header class="site-header sticky-header-wrapper 2xxl:mt-7.5 lg:mt-5 mt-1.25 absolute top-0 left-0 z-999 w-full">
@@ -74,8 +105,8 @@
 			<div class="container flex items-center relative z-1 before:rounded-xxl before:bg-white before:absolute lg:before:w-[calc(100%_+_40px)] sm:before:w-[calc(100%_+_20px)] before:w-[calc(100%_+_10px)] before:h-full lg:before:-mx-7.5 before:-mx-5 before:shadow-[0_10px_20px_rgba(var(--secondary-rgb),0.1)] before:-z-1 max-sm:before:left-3.75 [.site-header.is-fixed_&]:before:shadow-none">
 
 				<!-- Website Logo -->
-				<div class="flex items-center align-middle xl:w-41.25 w-33.75 sm:h-20 h-15.25 max-xl:me-2 border-r border-secondary/10 pr-3.75 mr-4.5 logo-dark">
-					<a href="index.html" class="table-cell align-middle"><img loading="lazy" src="images/logo.svg" alt="logo" class="object-contain"></a>
+				<div class="flex items-center justify-center align-middle xl:w-41.25 w-33.75 sm:h-20 h-15.25 max-xl:me-2 border-r border-secondary/10 pr-3.75 mr-4.5 logo-dark">
+					<a href="index.html" class="table-cell align-middle"><img loading="lazy" src="images/logo.png" alt="logo" class="object-contain" style="max-height:52px;width:auto"></a>
 				</div>
 
 				<button class="xmenu-toggler lg:hidden float-right my-2.5 lg:ml-7 ml-5 size-11 bg-secondary rounded-2lg relative cursor-pointer max-lg:order-1 max-sm:ms-auto" aria-label="Toggle navigation menu" type="button">
@@ -85,9 +116,9 @@
 				</button>
 				<div class="lg:hidden fixed top-0 left-0 bg-black size-full duration-300 z-999 opacity-0 visible pointer-events-none menu-close fade-overlay"></div>
 				<div class="flex lg:basis-auto lg:grow max-lg:flex-col lg:justify-start font-title max-lg:fixed max-lg:h-full max-lg:px-5 max-lg:top-0 max-lg:-left-75 max-lg:z-9999 max-lg:bg-white max-lg:w-72 max-lg:overflow-auto max-lg:duration-700 header-nav custom-scroll">
-					<div class="flex items-center relative z-9 py-6.25 lg:hidden w-33.75 h-15.25">
+					<div class="flex items-center justify-center relative z-9 py-6.25 lg:hidden w-33.75 h-15.25">
 						<a href="index.html" class="table-cell align-middle">
-							<img loading="lazy" src="images/logo.svg" alt="logo" width="400" height="120" class="object-contain duration-500">
+							<img loading="lazy" src="images/logo.png" alt="logo" class="object-contain duration-500" style="max-height:52px;width:auto">
 						</a>
 					</div>
 					<ul class="lg:flex flex-wrap navbar-nav">
@@ -97,57 +128,18 @@
 							</a>
 						</li>
 						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
-							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="about-us.html">
-								<span class="inline-block leading-7.5">Pages</span>
-								<i class="fas fa-chevron-right lg:!hidden !block size-7 !leading-7 rounded text-center text-xs bg-secondary text-white float-end"></i>
-							</a>
-							<ul class="lg:absolute bg-white block lg:left-0 lg:py-5 max-lg:py-2.5 max-lg:border-t max-lg:border-gray-200 w-full lg:w-55 lg:opacity-0 lg:invisible lg:translate-y-10 z-10 mt-0 text-left duration-500 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 max-lg:hidden lg:shadow-submenu sub-menu">
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="about-us.html"><span>About Us</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="appointment.html"><span>Appointment</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="services.html#pricing"><span>Pricing Table</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="testimonial.html"><span>Testimonial</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="team.html"><span>Team</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="faqs.html"><span>Faqs</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="error-404.html"><span>Error 404</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="coming-soon.html"><span>Coming Soon</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="under-construction.html"><span>Under Construction</span></a>
-								</li>
-							</ul>
-						</li>
-						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
 							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="services.html">
 								<span class="inline-block leading-7.5">Services</span>
-								<i class="fas fa-chevron-right lg:!hidden !block size-7 !leading-7 rounded text-center text-xs bg-secondary text-white float-end"></i>
 							</a>
-							<ul class="lg:absolute bg-white block lg:left-0 lg:py-5 max-lg:py-2.5 max-lg:border-t max-lg:border-gray-200 w-full lg:w-55 lg:opacity-0 lg:invisible lg:translate-y-10 z-10 mt-0 text-left duration-500 lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0 max-lg:hidden lg:shadow-submenu mega-menu">
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="services.html"><span>Services</span></a>
-								</li>
-								<li class="relative">
-									<a class="block relative text-sm text-gray-600 font-normal py-1.25 lg:px-7.5 duration-500 hover:text-primary" href="service-detail.html"><span>Services Detail</span></a>
-								</li>
-							</ul>
 						</li>
 						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
-							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="blog-grid.html">
-								<span class="inline-block leading-7.5">Blogs</span>
+							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="testimonial.html">
+								<span class="inline-block leading-7.5">Testimonials</span>
+							</a>
+						</li>
+						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
+							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="about-us.html">
+								<span class="inline-block leading-7.5">About Us</span>
 							</a>
 						</li>
 						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
@@ -159,16 +151,10 @@
 					<div class="lg:hidden block max-lg:p-5 text-center">
 						<ul>
 							<li class="inline-block mx-0.5">
-								<a class="size-10 !leading-10 border border-black/10 text-center text-secondary fab fa-facebook-f" target="_blank" href="https://www.facebook.com/dexignzone"></a>
+								<a class="size-10 !leading-10 border border-black/10 text-center text-secondary fab fa-facebook-f" target="_blank" href="https://www.facebook.com/DietsKoot/"></a>
 							</li>
 							<li class="inline-block mx-0.5">
-								<a class="size-10 !leading-10 border border-black/10 text-center text-secondary fab fa-twitter" target="_blank" href="https://twitter.com/dexignzones"></a>
-							</li>
-							<li class="inline-block mx-0.5">
-								<a class="size-10 !leading-10 border border-black/10 text-center text-secondary fab fa-linkedin-in" target="_blank" href="https://www.linkedin.com/showcase/3686700/admin/"></a>
-							</li>
-							<li class="inline-block mx-0.5">
-								<a class="size-10 !leading-10 border border-black/10 text-center text-secondary fab fa-instagram" target="_blank" href="https://www.instagram.com/dexignzone/"></a>
+								<a class="size-10 !leading-10 border border-black/10 text-center text-secondary fab fa-instagram" target="_blank" href="https://www.instagram.com/diets_koot_india/"></a>
 							</li>
 						</ul>
 					</div>
@@ -182,7 +168,7 @@
 								</div>
 								<div class="widget-content">
 									<h6 class="text-primary text-sm font-normal mb-0">Contact us</h6>
-									<a href="tel:+11234567890" class="sm:text-lg text-base font-semibold text-secondary">+1 123 456 7890</a>
+									<a href="tel:+919588909817" class="sm:text-lg text-base font-semibold text-secondary">+91 95889 09817</a>
 								</div>
 							</li>
 							<li class="inline-block">
@@ -233,13 +219,12 @@
 					<div class="absolute z-9 3xl:top-[30%] top-2/5 right-[35%] max-xl:hidden"><img class="animate-move2" src="images/banner/item2.png" alt=""></div>
 					<div class="absolute z-9 3xl:bottom-[20%] right-[10%] bottom-[30%] max-xl:hidden"><img class="animate-move3" src="images/banner/item3.png" alt=""></div> 
 					<div class="absolute z-9 bottom-[20%] 3xl:right-[18%] right-[5%] max-xl:hidden"><img class="animate-move3" src="images/banner/item4.png" alt=""></div>
-					<div class="h-full w-25 min-w-25 absolute bottom-0 flex justify-between items-center flex-col py-6.25 px-3.75 left-0 border-r border-white/10 z-1 max-xl:hidden">
+					<div class="h-full w-25 min-w-25 absolute bottom-0 flex justify-between items-center flex-col py-6.25 px-3.75 left-0 border-r border-white/10 z-1 max-xl:hidden social-rail rail-left">
 						<ul class="flex gap-7.5 [writing-mode:sideways-lr]">
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://x.com/">twitter</a></li>
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.facebook.com/">Facebook</a></li>
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.instagram.com/">Instagram</a></li>
+							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.facebook.com/DietsKoot/">Facebook</a></li>
+							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.instagram.com/diets_koot_india/">Instagram</a></li>
 						</ul>
-						<a href="javascript:void(0);" class="btn btn-white btn-sm !py-2 !px-4 shadow-btn [writing-mode:sideways-lr] !rounded-2xl">LET’S TALK</a>
+						<a href="appointment.html" class="btn btn-white btn-sm !py-2 !px-4 shadow-btn [writing-mode:sideways-lr] !rounded-2xl">LET’S TALK</a>
 					</div>
 				</div>
 				<!-- Banner End -->
@@ -326,6 +311,60 @@
 					</div>
 				</section>
 				
+				<section class="2xxl:py-25 xl:17.5 md:py-12.5 sm:py-10 py-7.5 bg-white">
+					<div class="container">
+						<div class="sm:mb-7.5 mb-5 text-center">
+							<span class="text-primary font-semibold leading-5 uppercase text-lg inline-flex gap-1.25 items-center">Our Team</span>
+							<h2 class="2xxl:text-5xxl lg:text-[38px] sm:text-[32px] text-2xxl font-bold capitalize mb-0">Meet Our Nutrition Experts</h2>
+						</div>
+						<div class="row">
+							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+								<div class="relative overflow-hidden">
+									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
+										<img src="images/team/img1.webp" alt="" class="w-full">
+									</div>
+									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
+										<h3 class="text-2xl font-semibold mb-0">Michael Carter</h3>
+										<span class="text-sm text-primary font-poppins block">Nutrition Specialist</span>
+									</div>
+								</div>
+							</div>
+							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+								<div class="relative overflow-hidden">
+									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
+										<img src="images/team/img2.webp" alt="" class="w-full">
+									</div>
+									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
+										<h3 class="text-2xl font-semibold mb-0">Jenny Wilson</h3>
+										<span class="text-sm text-primary font-poppins block">Nutrition Coach</span>
+									</div>
+								</div>
+							</div>
+							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+								<div class="relative overflow-hidden">
+									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
+										<img src="images/team/img3.webp" alt="" class="w-full">
+									</div>
+									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
+										<h3 class="text-2xl font-semibold mb-0">Arlene Mccoy</h3>
+										<span class="text-sm text-primary font-poppins block">Clinical Dietician</span>
+									</div>
+								</div>
+							</div>
+							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+								<div class="relative overflow-hidden">
+									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
+										<img src="images/team/img4.webp" alt="" class="w-full">
+									</div>
+									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
+										<h3 class="text-2xl font-semibold mb-0">Kristin Watson</h3>
+										<span class="text-sm text-primary font-poppins block">Women's Nutrition </span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
 				<section class="2xxl:pt-25 2xxl:pb-17.5 md:pt-17.5 sm:pt-12.5 pt-10 pb-10 bg-white">
 			<div class="container">
 				<div class="row content-wrapper style-5 items-center">
@@ -635,28 +674,18 @@
 						<div class="xl:w-1/3 w-full wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.8s">
 							<div class="mb-7.5 widget_about">
 								<div class="mb-6">
-									<a href="index.html"><img src="images/logo.svg" alt="" class="w-45"></a> 
+									<a href="index.html"><img src="images/logo.png" alt="" style="height:90px;width:auto"></a> 
 								</div>
-								<p class="text-2sm mb-5 leading-[1.7]">Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam</p>
+								<p class="text-2sm mb-5 leading-[1.7]">We have been the most trusted Health care Nutrition for 25 years. We&rsquo;re proud of our rich history for nutritionists services.</p>
 								<ul class="flex gap-6">
 									<li>
-										<a href="https://www.linkedin.com" target="_blank" class="text-primary">
-											<i class="fa-brands fa-linkedin"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://www.instagram.com" target="_blank" class="text-primary">
+										<a href="https://www.instagram.com/diets_koot_india/" target="_blank" class="text-primary">
 											<i class="fa-brands fa-instagram"></i>
 										</a>
 									</li>
 									<li>
-										<a href="https://www.facebook.com" target="_blank" class="text-primary">
+										<a href="https://www.facebook.com/DietsKoot/" target="_blank" class="text-primary">
 											<i class="fa-brands fa-facebook-f"></i>
-										</a>
-									</li>
-									<li>
-										<a href="https://twitter.com" target="_blank" class="text-primary">
-											<i class="fa-brands fa-x-twitter"></i>
 										</a>
 									</li>
 									<li>
@@ -667,25 +696,13 @@
 								</ul>
 							</div>
 						</div>
-						<div class="xl:w-1/6 md:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="0.8s">
-							<div class="mb-7.5 widget_services">
-								<h2 class="footer-title">Support </h2>
-								<ul class="list-hover1">
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="service-detail.html"><span>Getting started</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="service-detail.html"><span>Help center</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="service-detail.html"><span>Server status</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="service-detail.html"><span>Report a bug</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="service-detail.html"><span>Chat support</span></a></li>
-								</ul>   
-							</div>
-						</div>
 						<div class="xl:w-1/4 md:w-1/4 w-1/2 wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="0.8s">
 							<div class="mb-7.5 widget-address">
 								<h2 class="footer-title">Useful Links</h2>
 								<ul>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="tel:+11234567890"><i class="feather icon-phone-call text-primary text-xl"></i> +1 123 456 7890</a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="mailto:info@example.com"><i class="feather icon-mail text-primary text-xl"></i> info@example.com</a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="#"><i class="feather icon-map-pin text-primary text-xl"></i> 794 Mcallister St San Francisco, 94102</a></li>
+									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="tel:+919588909817"><i class="feather icon-phone-call text-primary text-xl"></i> +91 95889 09817</a></li>
+									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="mailto:dietskoot@gmail.com"><i class="feather icon-mail text-primary text-xl"></i> dietskoot@gmail.com</a></li>
+									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="#"><i class="feather icon-map-pin text-primary text-xl"></i> 1293, 14th cross, E and F block Near,<br>Ruby bakery, Ramakrishna Nagar<br>Mysore- 570022</a></li>
 								</ul>
 							</div>
 
@@ -695,11 +712,9 @@
 							<div class="mb-7.5 widget_services">
 								<h2 class="footer-title">Company</h2>
 								<ul class="list-hover1">
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="javascript:void(0);"><span>About</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="javascript:void(0);"><span>Contact us</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="javascript:void(0);"><span>Careers</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="javascript:void(0);"><span>Culture</span></a></li>
-									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="javascript:void(0);"><span>Blog</span></a></li>
+									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="about-us.html"><span>About</span></a></li>
+									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="appointment.html"><span>Contact us</span></a></li>
+									<li class="relative py-2 text-2sm leading-5 font-medium"><a href="blog-grid.html"><span>Blog</span></a></li>
 								</ul>
 							</div>
 						</div>
@@ -712,7 +727,7 @@
 							<div class="pt-6 pb-7.5 border-t border-black/10">
 								<div class="row">
 									<div class="lg:w-1/2 w-full lg:text-start text-center"> 
-										<p class="text-sm font-medium mb-0">© <span class="current-year">2025</span> <a href="https://themeforest.net/user/dexignzone" target="_blank" class="text-primary">DexignZone</a> Theme. All Rights Reserved.</p>
+										<p class="text-sm font-medium mb-0">© <span class="current-year">2025</span> Designed and developed by <span class="text-primary">6Creative</span></p>
 									</div>
 									<div class="lg:w-1/2 w-full lg:text-end text-center max-lg:mt-3.75"> 
 										<div class="flex items-center justify-center md:justify-center xl:justify-end">
@@ -735,7 +750,7 @@
 						<div class="title-head">
 							<h2 class="text-2xxl !text-white mb-5">Book Your Appointment</h2>
 						</div>
-						<form action="../assets/script/contact_smtp.php" class="dzForm" method="POST">
+						<form action="assets/script/contact_smtp.php" class="dzForm" method="POST">
 							<input type="hidden" class="h-15 py-3.75 pl-13.75 pr-6.25 rounded-2xl border border-white/50 bg-white/[0.08] text-white text-2sm block w-full" name="dzToDo" value="Appointment">
 							<input type="hidden" class="h-15 py-3.75 pl-13.75 pr-6.25 rounded-2xl border border-white/50 bg-white/[0.08] text-white text-2sm block w-full" name="reCaptchaEnable" value="0">
 							<div class="dzFormMsg"></div>
@@ -790,15 +805,15 @@
 
 </div>
 <!-- JAVASCRIPT FILES ========================================= -->
-<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="../assets/vendor/imagesloaded/imagesloaded.js"></script>
-<script defer src="../assets/vendor/gsap/gsap.min.js"></script>
-<script defer src="../assets/vendor/gsap/ScrollSmoother.js"></script>
-<script defer src="../assets/vendor/gsap/ScrollTrigger.min.js"></script>
-<script src="../assets/vendor/xmenu/xmenu.js"></script>
-<script src="../assets/js/dz.carousel.js"></script>
-<script src="../assets/js/dz.ajax.js"></script>
-<script src="../assets/js/animation.js"></script>
-<script src="../assets/js/custom.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/imagesloaded/imagesloaded.js"></script>
+<script defer src="assets/vendor/gsap/gsap.min.js"></script>
+<script defer src="assets/vendor/gsap/ScrollSmoother.js"></script>
+<script defer src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/xmenu/xmenu.js"></script>
+<script src="assets/js/dz.carousel.js"></script>
+<script src="assets/js/dz.ajax.js"></script>
+<script src="assets/js/animation.js"></script>
+<script src="assets/js/custom.js"></script>
 </body>
 </html>
