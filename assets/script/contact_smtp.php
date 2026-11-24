@@ -26,30 +26,53 @@ require('recaptcha-master/src/autoload.php');
 $recaptchaSecret = '<!-- Put your reCaptcha Key -->';
 
 /* ============================================================
-   MAIL SETTINGS -- everything you need to fill in is right here.
+   MAIL SETTINGS -- hosting: Hostinger (PHP is supported, so this works)
    ============================================================
 
-   1. $dzEmailTo   The inbox that receives the enquiries.
-   2. SMTP_HOST    Your host's outgoing mail server (cPanel > Email Accounts >
-                   "Connect Devices" shows it, e.g. mail.yourdomain.com).
-   3. SMTP_USER    Usually the full mailbox address, same as $dzEmailTo.
-   4. SMTP_PASS    That mailbox's password. Put it in on the server, and do not
-                   commit this file to a public repository once it is filled in.
-   5. SMTP_PORT /  587 with 'tls' works on most hosts.
-      SMTP_SECURE  Use 465 with 'ssl' if your host requires implicit TLS.
+   The password is never kept in this file. Create
+   assets/script/smtp-config.php on the server (git-ignored) containing:
 
-   Until SMTP_HOST/USER/PASS are filled in, sending will fail and the form
-   will report "Some problem in sending mail".
+       <?php return 'your-password-here';
+
+   Pick ONE of the two setups below and set SMTP_HOST / SMTP_USER to match.
+
+   A) Hostinger mailbox on your own domain  -- RECOMMENDED
+      Create it in hPanel > Emails > Email Accounts, e.g. info@yourdomain.com
+          SMTP_HOST   = 'smtp.hostinger.com'
+          SMTP_USER   = 'info@yourdomain.com'   (the full address)
+          SMTP_PORT   = 465      SMTP_SECURE = 'ssl'      (587/'tls' also works)
+          password    = that mailbox's password
+      Mail then comes from your own domain, which lands in inboxes far more
+      reliably than sending as a gmail.com address from a non-Google server.
+      $dzEmailTo can still be dietskoot@gmail.com if you prefer to read it
+      there, or set up forwarding in hPanel.
+
+   B) Gmail (dietskoot@gmail.com)
+          SMTP_HOST   = 'smtp.gmail.com'
+          SMTP_USER   = 'dietskoot@gmail.com'
+          SMTP_PORT   = 587      SMTP_SECURE = 'tls'
+          password    = a 16-character APP PASSWORD, not the account password
+                        (myaccount.google.com > Security > 2-Step Verification,
+                        then App passwords). A normal password is rejected with
+                        "535 Username and Password not accepted".
+
+   Until the password file exists, sending fails and the form reports
+   "Some problem in sending mail, please try again later."
    ------------------------------------------------------------ */
 
-$dzEmailTo 		= "info@exemple.com";   /* Receiver Email Address */
-$dzEmailFrom    = "ClinicMaster Contact";
+$dzEmailTo 		= "dietskoot@gmail.com";   /* Receiver Email Address */
+$dzEmailFrom    = "Diets Koot Website";
 
-define('SMTP_HOST',   '');      /* e.g. mail.yourdomain.com */
-define('SMTP_USER',   '');      /* e.g. info@yourdomain.com */
-define('SMTP_PASS',   '');      /* mailbox password         */
-define('SMTP_PORT',   587);     /* 587 for tls, 465 for ssl */
-define('SMTP_SECURE', 'tls');   /* must be lowercase: 'tls' or 'ssl' */
+define('SMTP_HOST',   'smtp.hostinger.com');   /* Hostinger mailbox */
+define('SMTP_USER',   'info@dietskootindia.com');   /* <-- mailbox from hPanel > Emails > Mailboxes */
+/* The app password is NEVER stored in this file. It is read from either the
+   SMTP_PASS environment variable, or assets/script/smtp-config.php, which is
+   git-ignored. See smtp-config.example.php for the one-line format. */
+$smtpPassFile = __DIR__ . '/smtp-config.php';
+$smtpPass     = getenv('SMTP_PASS') ?: (is_readable($smtpPassFile) ? include $smtpPassFile : '');
+define('SMTP_PASS',   $smtpPass);
+define('SMTP_PORT',   465);     /* Hostinger: 465 with ssl (587 with tls also works) */
+define('SMTP_SECURE', 'ssl');   /* must be lowercase: 'tls' or 'ssl' */
 
 #### Load PHP Mailer Library ####
 use PHPMailer\PHPMailer\PHPMailer;
@@ -354,7 +377,7 @@ try {
 }
 
 function isAlphabetic($data){
-	if (!preg_match('/[^A-Za-z 0-9]/', $data)) // '/[^a-z\d]/i' should also work.
+	if (!preg_match("/[^A-Za-z 0-9.'-]/", $data)) // '/[^a-z\d]/i' should also work.
 	{
 		return true;
 	} else{

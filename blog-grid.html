@@ -90,6 +90,22 @@
 		@media (prefers-reduced-motion: reduce) {
 			::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 		}
+		/* The header container spans the full width, so its empty left edge used to
+		   sit on top of the social rail and swallow clicks. Let clicks pass through
+		   the bar's background while its contents stay clickable. */
+		.main-bar > .container { pointer-events: none; }
+		.main-bar > .container > * { pointer-events: auto; }
+		/* The floating header bar overlaps the top of the social rail, which made
+		   the first label (Instagram) unclickable. Start the rail below the bar. */
+		.social-rail { padding-top: 7rem; }
+		/* "Medical History Form" is a long label: tighten the nav between the
+		   tablet and wide-desktop sizes so the row never wraps. */
+		@media (min-width: 1150px) and (max-width: 1399px) {
+			.navbar-nav > li > a { padding-left: .5rem; padding-right: .5rem; font-size: 1rem; }
+		}
+		@media (min-width: 992px) and (max-width: 1149px) {
+			.navbar-nav > li > a { padding-left: .3rem; padding-right: .3rem; font-size: .9rem; }
+		}
 	</style>
 </head>	
 <body id="bg">
@@ -145,6 +161,11 @@
 								<span class="inline-block leading-7.5">Contact Us</span>
 							</a>
 						</li>
+						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
+							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="medical-form.html">
+								<span class="inline-block leading-7.5">Medical History Form</span>
+							</a>
+						</li>
 					</ul>
 					<div class="lg:hidden block max-lg:p-5 text-center">
 						<ul>
@@ -168,12 +189,6 @@
 									<h6 class="text-primary text-sm font-normal mb-0">Contact us</h6>
 									<a href="tel:+919588909817" class="sm:text-lg text-base font-semibold text-secondary">+91 95889 09817</a>
 								</div>
-							</li>
-							<li class="inline-block">
-								<a href="javascript:void(0);" class="min-w-10 flex align-center justify-center align-middle relative">
-									<i class="feather icon-shopping-cart text-[32px] text-secondary"></i>
-									<span class="absolute -top-1 right-0.5 text-xs flex items-center justify-center min-h-4.5 min-w-4.5 font-semibold bg-white text-secondary rounded-full">5</span>
-								</a>
 							</li>
 							<li class="inline-block">
 								<a href="appointment.html" class="btn btn-primary btn-hover1 max-md:!text-sm max-md:!py-2.5 max-md:!px-4.5 max-md:!rounded-2lg">
@@ -218,8 +233,8 @@
 					<div class="absolute z-9 bottom-[20%] 3xl:right-[18%] right-[5%] max-xl:hidden"><img class="animate-move3" src="images/banner/item4.png" alt=""></div>
 					<div class="h-full w-25 min-w-25 absolute bottom-0 flex justify-between items-center flex-col py-6.25 px-3.75 left-0 border-r border-white/10 z-1 max-xl:hidden social-rail rail-left">
 						<ul class="flex gap-7.5 [writing-mode:sideways-lr]">
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.facebook.com/DietsKoot/">Facebook</a></li>
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.instagram.com/diets_koot_india/">Instagram</a></li>
+							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.facebook.com/DietsKoot/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.instagram.com/diets_koot_india/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
 						</ul>
 						<a href="appointment.html" class="btn btn-white btn-sm !py-2 !px-4 shadow-btn [writing-mode:sideways-lr] !rounded-2xl">LET’S TALK</a>
 					</div>

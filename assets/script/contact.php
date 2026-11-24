@@ -25,7 +25,7 @@ require('recaptcha-master/src/autoload.php');
 /* ReCaptch Secret */
 $recaptchaSecret = '<!-- Put your reCaptcha Key -->';
 
-$dzEmailTo 		= "info@exemple.com";   /* Receiver Email Address */
+$dzEmailTo 		= "dietskoot@gmail.com";   /* Receiver Email Address */
 $dzEmailFrom    = "ClinicMaster Contact";
 
 function pr($value)

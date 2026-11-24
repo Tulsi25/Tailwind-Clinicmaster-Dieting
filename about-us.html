@@ -92,6 +92,30 @@
 		@media (prefers-reduced-motion: reduce) {
 			::view-transition-old(root), ::view-transition-new(root) { animation: none; }
 		}
+		/* The header container spans the full width, so its empty left edge used to
+		   sit on top of the social rail and swallow clicks. Let clicks pass through
+		   the bar's background while its contents stay clickable. */
+		.main-bar > .container { pointer-events: none; }
+		.main-bar > .container > * { pointer-events: auto; }
+		/* The floating header bar overlaps the top of the social rail, which made
+		   the first label (Instagram) unclickable. Start the rail below the bar. */
+		.social-rail { padding-top: 7rem; }
+		/* Team grid: five experts across on large screens, fewer as it narrows. */
+		.team-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.875rem 1.25rem; }
+		.team-grid > div { flex: 0 1 100%; max-width: 360px; }
+		.team-grid img { aspect-ratio: 1 / 1; object-fit: cover; object-position: center 20%; }
+		@media (min-width: 576px) { .team-grid > div { flex: 0 1 calc(50% - .625rem); } }
+		@media (min-width: 992px) { .team-grid > div { flex: 0 1 calc(33.333% - .834rem); } }
+		.team-qual { display: block; margin-top: .6rem; font-size: .85rem; font-weight: 600; line-height: 1.4; color: var(--secondary); }
+		.team-bio { margin-top: .7rem; font-size: .9rem; line-height: 1.65; color: #6c757d; }
+		/* "Medical History Form" is a long label: tighten the nav between the
+		   tablet and wide-desktop sizes so the row never wraps. */
+		@media (min-width: 1150px) and (max-width: 1399px) {
+			.navbar-nav > li > a { padding-left: .5rem; padding-right: .5rem; font-size: 1rem; }
+		}
+		@media (min-width: 992px) and (max-width: 1149px) {
+			.navbar-nav > li > a { padding-left: .3rem; padding-right: .3rem; font-size: .9rem; }
+		}
 	</style>
 </head>	
 <body id="bg">
@@ -147,6 +171,11 @@
 								<span class="inline-block leading-7.5">Contact Us</span>
 							</a>
 						</li>
+						<li class="lg:inline-block block max-lg:border-b max-lg:border-gray-200 relative group">
+							<a class="lg:py-6 py-2 xl:px-4 lg:px-2 relative lg:inline-block block xl:text-lg text-2sm font-medium lg:text-heading text-secondary hover:text-primary" href="medical-form.html">
+								<span class="inline-block leading-7.5">Medical History Form</span>
+							</a>
+						</li>
 					</ul>
 					<div class="lg:hidden block max-lg:p-5 text-center">
 						<ul>
@@ -170,12 +199,6 @@
 									<h6 class="text-primary text-sm font-normal mb-0">Contact us</h6>
 									<a href="tel:+919588909817" class="sm:text-lg text-base font-semibold text-secondary">+91 95889 09817</a>
 								</div>
-							</li>
-							<li class="inline-block">
-								<a href="javascript:void(0);" class="min-w-10 flex align-center justify-center align-middle relative">
-									<i class="feather icon-shopping-cart text-[32px] text-secondary"></i>
-									<span class="absolute -top-1 right-0.5 text-xs flex items-center justify-center min-h-4.5 min-w-4.5 font-semibold bg-white text-secondary rounded-full">5</span>
-								</a>
 							</li>
 							<li class="inline-block">
 								<a href="appointment.html" class="btn btn-primary btn-hover1 max-md:!text-sm max-md:!py-2.5 max-md:!px-4.5 max-md:!rounded-2lg">
@@ -221,8 +244,8 @@
 					<div class="absolute z-9 bottom-[20%] 3xl:right-[18%] right-[5%] max-xl:hidden"><img class="animate-move3" src="images/banner/item4.png" alt=""></div>
 					<div class="h-full w-25 min-w-25 absolute bottom-0 flex justify-between items-center flex-col py-6.25 px-3.75 left-0 border-r border-white/10 z-1 max-xl:hidden social-rail rail-left">
 						<ul class="flex gap-7.5 [writing-mode:sideways-lr]">
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.facebook.com/DietsKoot/">Facebook</a></li>
-							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.instagram.com/diets_koot_india/">Instagram</a></li>
+							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.facebook.com/DietsKoot/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+							<li><a class="text-xs font-semibold uppercase text-white tracking-[1px]" href="https://www.instagram.com/diets_koot_india/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
 						</ul>
 						<a href="appointment.html" class="btn btn-white btn-sm !py-2 !px-4 shadow-btn [writing-mode:sideways-lr] !rounded-2xl">LET’S TALK</a>
 					</div>
@@ -317,48 +340,69 @@
 							<span class="text-primary font-semibold leading-5 uppercase text-lg inline-flex gap-1.25 items-center">Our Team</span>
 							<h2 class="2xxl:text-5xxl lg:text-[38px] sm:text-[32px] text-2xxl font-bold capitalize mb-0">Meet Our Nutrition Experts</h2>
 						</div>
-						<div class="row">
-							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+						<div class="row team-grid">
+							<div>
 								<div class="relative overflow-hidden">
 									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
-										<img src="images/team/img1.webp" alt="" class="w-full">
+										<img src="images/team/expert1.jpg" alt="Dr. Srilalitha Avinash" width="403" height="477" loading="lazy" class="w-full">
 									</div>
 									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
-										<h3 class="text-2xl font-semibold mb-0">Michael Carter</h3>
-										<span class="text-sm text-primary font-poppins block">Nutrition Specialist</span>
+										<h3 class="text-2xl font-semibold mb-0">Dr. Srilalitha Avinash</h3>
+										<span class="text-sm text-primary font-poppins block">Ayurveda &amp; Yoga Therapy</span>
+										<span class="team-qual">BAMS, MBA, M.Sc (Yoga Therapy), PGD PC</span>
+										<p class="team-bio">Every individual&rsquo;s ambition is to be fit and healthy. Diet plans that let you eat good food and stay fit, built around each person&rsquo;s tastes.</p>
 									</div>
 								</div>
 							</div>
-							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+							<div>
 								<div class="relative overflow-hidden">
 									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
-										<img src="images/team/img2.webp" alt="" class="w-full">
+										<img src="images/team/expert2.jpg" alt="Nikita Tiwari" width="403" height="477" loading="lazy" class="w-full">
 									</div>
 									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
-										<h3 class="text-2xl font-semibold mb-0">Jenny Wilson</h3>
-										<span class="text-sm text-primary font-poppins block">Nutrition Coach</span>
+										<h3 class="text-2xl font-semibold mb-0">Nikita Tiwari</h3>
+										<span class="text-sm text-primary font-poppins block">Nutritionist</span>
+										<span class="team-qual">M.Sc in Food Science &amp; Nutrition</span>
+										<p class="team-bio">Six years in the health sector. Online consultations and customized diet plans for weight loss and gain, diabetes, kids and heart health.</p>
 									</div>
 								</div>
 							</div>
-							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+							<div>
 								<div class="relative overflow-hidden">
 									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
-										<img src="images/team/img3.webp" alt="" class="w-full">
+										<img src="images/team/expert3.jpg" alt="Rajni Singh" width="403" height="477" loading="lazy" class="w-full">
 									</div>
 									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
-										<h3 class="text-2xl font-semibold mb-0">Arlene Mccoy</h3>
-										<span class="text-sm text-primary font-poppins block">Clinical Dietician</span>
+										<h3 class="text-2xl font-semibold mb-0">Rajni Singh</h3>
+										<span class="text-sm text-primary font-poppins block">Nutritionist</span>
+										<span class="team-qual">B.Sc, Clinical Nutrition &amp; Dietetics, V.B.U Hazaribagh</span>
+										<p class="team-bio">Online diet consultation and personalized diet charts for weight loss and gain, diabetes, kids nutrition, heart health and therapeutic diets.</p>
 									</div>
 								</div>
 							</div>
-							<div class="xl:w-1/4 sm:w-1/2 w-full mb-7.5">
+							<div>
 								<div class="relative overflow-hidden">
 									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
-										<img src="images/team/img4.webp" alt="" class="w-full">
+										<img src="images/team/expert4.jpg" alt="Shweta Sharma" width="403" height="477" loading="lazy" class="w-full">
 									</div>
 									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
-										<h3 class="text-2xl font-semibold mb-0">Kristin Watson</h3>
-										<span class="text-sm text-primary font-poppins block">Women's Nutrition </span>
+										<h3 class="text-2xl font-semibold mb-0">Shweta Sharma</h3>
+										<span class="text-sm text-primary font-poppins block">Nutritionist</span>
+										<span class="team-qual">B.Sc M.Sc, DDPHN Delhi University</span>
+										<p class="team-bio">Diploma in Dietetics &amp; Public Health Nutrition. Diet counselling for weight management, diabetes, hepatic diet, pre and post natal care, kids diet and cholesterol.</p>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="relative overflow-hidden">
+									<div class="relative overflow-hidden z-0 after:absolute after:bg-light after:border after:border-primary/10 after:border-b-0 after:rounded-t-3xl after:bottom-0 after:left-0 after:h-[80%] after:-z-1 after:w-full after:bg-cover">
+										<img src="images/team/expert5.jpg" alt="Taniya Chadha" width="403" height="477" loading="lazy" class="w-full">
+									</div>
+									<div class="p-5 border-t-0 border border-primary/10 rounded-b-2lg">
+										<h3 class="text-2xl font-semibold mb-0">Taniya Chadha</h3>
+										<span class="text-sm text-primary font-poppins block">Nutritionist</span>
+										<span class="team-qual">B.Sc (Home Science), M.Sc (Food &amp; Nutrition) &amp; Diploma in Dietetics, Delhi University</span>
+										<p class="team-bio">More than 15 years in nutrition, providing therapeutic counselling and obesity care, with diets customized for both Indian and international clients.</p>
 									</div>
 								</div>
 							</div>
