@@ -1,4 +1,4 @@
-const ClinicMasterGsap = function(){
+const DKGsap = function(){
   
   gsap.registerPlugin( ScrollSmoother, ScrollTrigger );
 
@@ -320,7 +320,7 @@ const ClinicMasterGsap = function(){
 };
 
 window.addEventListener("load", () => {
-  ClinicMasterGsap().init();
+  DKGsap().init();
 });
 
 let resizeTimeout;

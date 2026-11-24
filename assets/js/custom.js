@@ -1,4 +1,4 @@
-const ClinicMaster = (function () {
+const DKSite = (function () {
   "use strict";
 
 
@@ -391,11 +391,11 @@ const ClinicMaster = (function () {
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
-  ClinicMaster.init();
+  DKSite.init();
 });
 
 window.addEventListener("load", function () {
-  ClinicMaster.load();
+  DKSite.load();
   const dzPreloader = document.getElementById("dzPreloader");
   setTimeout(function () {
     if (dzPreloader) {
@@ -411,5 +411,5 @@ window.addEventListener("load", function () {
 });
 
 window.addEventListener("resize", function () {
-  ClinicMaster.resize();
+  DKSite.resize();
 });

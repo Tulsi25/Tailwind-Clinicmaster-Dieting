@@ -1,6 +1,6 @@
 <?php
 /*
-ClinicMaster - Health & Medical Tailwind Template
+Diets Koot - website mailer
 
 Variable
 	$recaptchaSecret : Recaptcha Secret Key
@@ -26,7 +26,7 @@ require('recaptcha-master/src/autoload.php');
 $recaptchaSecret = '<!-- Put your reCaptcha Key -->';
 
 $dzEmailTo 		= "dietskoot@gmail.com";   /* Receiver Email Address */
-$dzEmailFrom    = "ClinicMaster Contact";
+$dzEmailFrom    = "Diets Koot Website";
 
 function pr($value)
 {
@@ -136,7 +136,7 @@ try {
 				exit;
 			}
 			
-			$dzMailSubject = 'ClinicMaster|Contact Form: A Person want to contact';
+			$dzMailSubject = 'New enquiry from the Diets Koot website';
 			$dzMailMessage	= 	"
 								A person want to contact you: <br><br>
 								Name: $dzName<br/>
@@ -244,7 +244,7 @@ try {
 			
 				
 			
-			$dzMailSubject = 'ClinicMaster|Appointment Form: A Person want to contact';
+			$dzMailSubject = 'New appointment request from the Diets Koot website';
 			$dzMailMessage	= 	"
 								A person want to contact you: <br><br>
 								Name: $dzName<br/>

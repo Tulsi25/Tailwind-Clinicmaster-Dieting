@@ -1,6 +1,6 @@
 <?php
 /*
-ClinicMaster - Health & Medical Tailwind Template
+Diets Koot - website mailer
 
 Variable
 	

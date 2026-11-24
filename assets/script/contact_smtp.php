@@ -1,6 +1,6 @@
 <?php
 /*
-ClinicMaster - Health & Medical Tailwind Template
+Diets Koot - website mailer
 
 Variable
 	$recaptchaSecret : Recaptcha Secret Key
@@ -104,9 +104,15 @@ function smtp_mail($dzEmailTo, $dzEmailFrom, $dzEmail, $dzMailSubject, $dzMailMe
     $mail->Port       = SMTP_PORT;                       //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom($dzEmailTo, $dzEmailFrom);
-    $mail->addAddress($dzEmailTo, $dzEmailFrom);     //Add a recipient
-    $mail->addReplyTo($dzEmail);
+    /* The From address MUST be the mailbox we authenticated as. Hostinger
+       rejects anything else with "553 Sender address rejected: not owned by
+       user". The visitor's own address goes in Reply-To, so hitting reply in
+       Gmail still answers the patient directly. */
+    $mail->setFrom(SMTP_USER, $dzEmailFrom);
+    $mail->addAddress($dzEmailTo);                   //Add a recipient
+    if (!empty($dzEmail)) {
+        $mail->addReplyTo($dzEmail);
+    }
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
@@ -220,7 +226,7 @@ try {
 				exit;
 			}
 			
-			$dzMailSubject = 'ClinicMaster|Contact Form: A Person want to contact';
+			$dzMailSubject = 'New enquiry from the Diets Koot website';
 			$dzMailMessage	= 	"
 								A person want to contact you: <br><br>
 								Name: $dzName<br/>
@@ -249,7 +255,7 @@ try {
 			if($res)
 			{
 				$dzRes['status'] = 1;
-				$dzRes['msg'] = 'We have received your message successfully. Thanks for Contact.';
+				$dzRes['msg'] = 'Thank you for submitting. We will contact you soon.';
 			}
 			else
 			{
@@ -328,7 +334,7 @@ try {
 
 
 
-			$dzMailSubject = 'ClinicMaster|Appointment Form: A Person want to contact';
+			$dzMailSubject = 'New appointment request from the Diets Koot website';
 			$dzMailMessage	= 	"
 								A person want to contact you: <br><br>
 								Name: $dzName<br/>
@@ -356,7 +362,7 @@ try {
 			if($res)
 			{
 				$dzRes['status'] = 1;
-				$dzRes['msg'] = 'We have received your message successfully. Thanks for Contact.';
+				$dzRes['msg'] = 'Thank you for submitting. We will contact you soon.';
 			}
 			else
 			{

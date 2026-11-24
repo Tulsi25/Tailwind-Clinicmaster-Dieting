@@ -1,4 +1,4 @@
-const ClinicMasterCarousel = function () {
+const DKCarousel = function () {
 
   const BlogSlideshowSwiper = () => {
     const swiperEl = document.querySelector(".blog-slideshow");
@@ -107,5 +107,5 @@ const ClinicMasterCarousel = function () {
 };
 
 window.addEventListener("load", function () {
-  ClinicMasterCarousel().load();
+  DKCarousel().load();
 });
